@@ -1,22 +1,36 @@
-import React from 'react';
-import { NavLink } from 'react-router';
+import React, { use } from 'react';
+import { Link, NavLink } from 'react-router';
+import { AuthContext } from '../Context/AuthContext';
+import './Header.css';
+import { CiLogout } from "react-icons/ci";
+import { toast } from 'react-toastify';
+
 
 const NavBar = () => {
+    const { user,signOutUser } = use(AuthContext)
+    console.log(user)
     const links = <>
-        <NavLink to={'/'}>Home</NavLink>
-        <NavLink to={'/allIssues'}>All Issues</NavLink>
-        <NavLink to={'/addIssues'}>Add Issues</NavLink>
-        <NavLink to={'/myIssues'}>My Issues</NavLink>
-        <NavLink to={'/myContribution'}>My Contribution</NavLink>
-        {/* {
+        <li><NavLink to={'/'}>Home</NavLink></li>
+        <li><NavLink to={'/allIssues'}>All Issues</NavLink></li>
+        {
             user && <>
-                <NavLink to={'/myproducts'}>My Products</NavLink>
-                <NavLink to={'/mybids'}>My Bids</NavLink>
+                <li><NavLink to={'/addIssues'}>Add Issues</NavLink></li>
+                <li><NavLink to={'/myIssues'}>My Issues</NavLink></li>
+                <li><NavLink to={'/myContribution'}>My Contribution</NavLink></li>
             </>
-        } */}
-        {/* <NavLink to={'/createproducts'}>Create Products</NavLink> */}
+        }
 
     </>
+
+    const handleLogout = () => {
+        signOutUser()
+        .then(() => {
+            toast.success("Successfully logged out!");
+        })
+        .catch(error => {
+            console.log(error)
+        })
+    }
     return (
         <div className="navbar bg-base-100 shadow-sm">
             <div className="navbar-start">
@@ -36,6 +50,29 @@ const NavBar = () => {
                 <ul className="menu menu-horizontal px-1">
                     {links}
                 </ul>
+                {
+                    !user ? (
+                        <>
+                            <Link to={'/logIn'} className='btn btn-primary'>LogIn</Link>
+                            <Link to={'/register'} className='btn ml-2 btn-primary'>Register</Link>
+                        </>
+                    ) : (
+                        <div className="dropdown dropdown-end">
+                            <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar">
+                                <div className="w-10 rounded-full">
+                                    <img
+                                        src={user?.photoURL || "https://i.ibb.co.com/nxCCrZ9/TVS-Apache-RTR-160-copy1-cf4fd92da6.webp"}
+                                        alt="user avatar"
+                                    />
+                                </div>
+                            </div>
+                            <ul tabIndex={0} className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow">
+                                
+                                <li><a onClick={handleLogout}><CiLogout />Logout</a></li>
+                            </ul>
+                        </div>
+                    )
+                }
             </div>
         </div>
     );
