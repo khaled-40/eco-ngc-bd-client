@@ -1,6 +1,7 @@
 import React, { use } from 'react';
 import { Link } from 'react-router';
 import { AuthContext } from '../Context/AuthContext';
+import { toast } from 'react-toastify';
 
 const Login = () => {
     const {signInUser} = use(AuthContext)
@@ -12,6 +13,7 @@ const Login = () => {
         signInUser(email, password)
         .then(result => {
             console.log(result.user)
+            toast.success("Successfully Logged IN!")
         })
         .catch(error => {
             console.log(error.message)
