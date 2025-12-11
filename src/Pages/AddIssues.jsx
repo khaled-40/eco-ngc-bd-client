@@ -150,8 +150,7 @@ const AddIssues = () => {
                         />
                     </div>
 
-                    {/* Status (Hidden) */}
-                    <input type="hidden" name="status" value="ongoing" />
+
 
                     {/* Submit Button */}
                     <button className="btn btn-primary w-full mt-4">
