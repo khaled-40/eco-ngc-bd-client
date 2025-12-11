@@ -1,10 +1,11 @@
-import React, { use, useRef } from "react";
+import React, { use, useEffect, useRef, useState } from "react";
 import { useLoaderData } from "react-router";
 import Swal from "sweetalert2";
 import { AuthContext } from "../Context/AuthContext";
 
 const IssueDetails = () => {
     const issue = useLoaderData();
+    const [contributions, setContributions] = useState([]);
     const {user} = use(AuthContext);
     const modalRef = useRef(); // <-- modal reference
 
@@ -30,14 +31,15 @@ const IssueDetails = () => {
     const handleModalSubmit = (e) => {
         e.preventDefault();
         const name = e.target.name.value;
-        const issueId = issue._id;
+        const issueId = _id;
         const amount = e.target.amount.value;
         const email = e.target.email.value;
+        const photoURL = e.target.photoURL.value;
         const phone = e.target.phone.value;
         const address = e.target.address.value;
         const date = e.target.date.value;
         const additionalInfo = e.target.additionalInfo.value;
-        console.log(issueId, name, amount, email, phone, address, date, additionalInfo)
+        console.log(issueId, name, amount, email,photoURL, phone, address, date, additionalInfo)
         const newContribution = { issueId, amount, name, email, phone, address, date, additionalInfo }
 
         fetch('http://localhost:3000/contributions', {
@@ -55,7 +57,7 @@ const IssueDetails = () => {
                     Swal.fire({
                         position: "top-end",
                         icon: "success",
-                        title: "Your work has been saved",
+                        title: "Your contribution was successful",
                         showConfirmButton: false,
                         timer: 1500
                     });
@@ -67,6 +69,14 @@ const IssueDetails = () => {
             });
 
     }
+    useEffect(() => {
+        fetch(`http://localhost:3000/issue/contributions/${issue._id}`)
+        .then(res => res.json())
+        .then(data => {
+            console.log(data)
+            setContributions(data)
+        })
+    },[issue._id])
 
     return (
         <div className="max-w-5xl mx-auto px-2 sm:px-4 md:px-6 py-4 sm:py-6 space-y-5">
@@ -175,11 +185,14 @@ const IssueDetails = () => {
                         </thead>
 
                         <tbody>
-                            <tr>
-                                <td><img src="https://i.pravatar.cc/50" className="w-12 h-12 rounded-full" alt="contributor" /></td>
-                                <td className="font-medium">John Doe</td>
-                                <td className="text-green-600 font-bold">৳ 500</td>
-                            </tr>
+                            {
+                                contributions.map(contribution => <tr key={contribution._id}>
+                                <td><img src={contribution?.photoURL} className="w-12 h-12 rounded-full" alt="contributor" /></td>
+                                <td className="font-medium">{contribution.name}</td>
+                                <td className="text-green-600 font-bold">৳ {contribution.amount}</td>
+                            </tr>)
+                            }
+                            
                         </tbody>
                     </table>
                 </div>

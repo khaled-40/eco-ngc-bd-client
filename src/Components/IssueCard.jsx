@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router';
 
 const IssueCard = ({ issue }) => {
-    console.log(issue)
+    // console.log(issue)
     return (
         <div className="card bg-base-100 w-96 shadow-sm">
             <div className="card-body">
