@@ -12,7 +12,7 @@ const IssueCard = ({ issue }) => {
                 <span className="text-sm text-gray-700">
                     Location: <span className="font-medium text-gray-900">{issue.location}</span>
                 </span>
-                <Link to={`/issueDetails/${issue._id}`}><button className='btn btn-primary'>See Details</button></Link>
+                <Link to={`/issueDetails/${issue._id}`}><button className='btn btn-primary w-full'>See Details</button></Link>
             </div>
         </div>
     );

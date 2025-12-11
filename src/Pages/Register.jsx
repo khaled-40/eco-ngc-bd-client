@@ -2,6 +2,7 @@ import React, { use } from 'react';
 import { Link } from 'react-router';
 import { AuthContext } from '../Context/AuthContext';
 import Swal from 'sweetalert2';
+import { updateProfile } from 'firebase/auth';
 
 const Register = () => {
     const { createUser } = use(AuthContext)
@@ -11,7 +12,7 @@ const Register = () => {
         const email = e.target.email.value;
         const password = e.target.password.value;
         const photoURL = e.target.photoURL.value;
-        console.log(email, password,photoURL)
+        console.log(email, password, photoURL)
 
         const passwordSize = /^.{6,}$/;
         if (!passwordSize.test(password)) {
@@ -35,6 +36,11 @@ const Register = () => {
         createUser(email, password)
             .then(result => {
                 console.log(result);
+                const user = result.user;
+                updateProfile(user, {
+                    displayName: name,
+                    photoURL: photoURL
+                })
                 const newUser = {
                     name,
                     email,
@@ -78,7 +84,7 @@ const Register = () => {
                         <input type="email" name='email' className="input" placeholder="Email" />
                         {/* PhhotoURL Field  */}
                         <label className="label">PhotoURL</label>
-                        <input type="text" name='photoURL' className="input"/>
+                        <input type="text" name='photoURL' className="input" />
                         {/* Password Field  */}
                         <label className="label">Password</label>
                         <input type="password" name='password' className="input" placeholder="Password" />

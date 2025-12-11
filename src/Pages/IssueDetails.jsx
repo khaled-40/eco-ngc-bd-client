@@ -7,6 +7,7 @@ const IssueDetails = () => {
     const issue = useLoaderData();
     const [contributions, setContributions] = useState([]);
     const {user} = use(AuthContext);
+    console.log(user.photoURL)
     const modalRef = useRef(); // <-- modal reference
 
     const {
@@ -31,6 +32,7 @@ const IssueDetails = () => {
     const handleModalSubmit = (e) => {
         e.preventDefault();
         const name = e.target.name.value;
+        console.log(name)
         const issueId = _id;
         const amount = e.target.amount.value;
         const email = e.target.email.value;
@@ -40,7 +42,7 @@ const IssueDetails = () => {
         const date = e.target.date.value;
         const additionalInfo = e.target.additionalInfo.value;
         console.log(issueId, name, amount, email,photoURL, phone, address, date, additionalInfo)
-        const newContribution = { issueId, amount, name, email, phone, address, date, additionalInfo }
+        const newContribution = { issueId, amount, name, email,photoURL, phone, address, date, additionalInfo }
 
         fetch('http://localhost:3000/contributions', {
             method: 'POST',
@@ -124,17 +126,17 @@ const IssueDetails = () => {
 
                         <div>
                             <label className="font-semibold">Contributor Name</label>
-                            <input type="text" name="name" className="input input-bordered w-full" placeholder="Your name" required />
+                            <input type="text" name="name" className="input input-bordered w-full" value={user?.displayName} readOnly />
                         </div>
 
                         <div>
                             <label className="font-semibold">Email</label>
-                            <input type="email" name="email" className="input input-bordered w-full" value="user@example.com" readOnly />
+                            <input type="email" name="email" className="input input-bordered w-full" value={user?.email} readOnly />
                         </div>
 
                         <div>
                             <label className="font-semibold">PhotoURL</label>
-                            <input type="email" name="photoURL" className="input input-bordered w-full" value={user?.photoURl} readOnly />
+                            <input type="email" name="photoURL" className="input input-bordered w-full" value={user?.photoURL} readOnly />
                         </div>
 
                         <div>
@@ -171,7 +173,7 @@ const IssueDetails = () => {
                 </div>
             </dialog>
 
-            {/* --- Contributors Table (Dummy) --- */}
+
             <div className="bg-white rounded-xl shadow px-2 sm:px-4 md:px-6 mt-8">
                 <h2 className="text-2xl font-bold mb-4">Contributors</h2>
                 <div className="overflow-x-auto">
