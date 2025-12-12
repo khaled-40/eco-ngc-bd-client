@@ -74,7 +74,7 @@ const MyContributions = () => {
 
     // console.log(myContributions)
     return (
-        <div className="p-4 md:p-6">
+        <div className="p-2 md:p-4 lg:p-6">
             <h2 className="text-3xl font-bold text-center mb-6">My Contributions</h2>
 
             {/* If no contributions */}
