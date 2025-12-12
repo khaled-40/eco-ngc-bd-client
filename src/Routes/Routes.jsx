@@ -22,7 +22,7 @@ export const router = createBrowserRouter([
         },
         {
             path:'/addIssues',
-            Component: AddIssues
+            element: <PrivateRoute><AddIssues></AddIssues></PrivateRoute>
         },
         {
             path: '/allIssues',
