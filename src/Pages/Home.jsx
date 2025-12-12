@@ -2,6 +2,7 @@ import React from 'react';
 import Category from '../Components/Category';
 import LatestIssues from '../Components/LatestIssues';
 import Banner from '../Components/Banner';
+import CommunityExtras from '../Components/CommunityExtras';
 
 const Home = () => {
     return (
@@ -9,6 +10,7 @@ const Home = () => {
             <Banner></Banner>
             <Category></Category>
             <LatestIssues></LatestIssues>
+            <CommunityExtras></CommunityExtras>
         </div>
     );
 };
