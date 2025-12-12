@@ -4,6 +4,7 @@ import Swal from "sweetalert2";
 
 const MyIssues = () => {
     const { user } = useContext(AuthContext);
+    console.log(user.email)
     const [myIssues, setMyIssues] = useState([]);
     const [selectedIssue, setSelectedIssue] = useState(null);
 
@@ -15,7 +16,9 @@ const MyIssues = () => {
         fetch(`http://localhost:3000/issues?email=${user?.email}`)
             .then((res) => res.json())
             .then((data) => setMyIssues(data));
-    }, [user]);
+    }, [user?.email]);
+
+    console.log(myIssues)
 
     // -------------------------------
     //  UPDATE ISSUE FUNCTION

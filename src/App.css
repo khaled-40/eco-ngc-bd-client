@@ -1,13 +1,18 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+
 @import "tailwindcss";
+
 @plugin "daisyui" {
   themes: light --default;
 }
+
 @plugin "daisyui/theme" {
   name: "light";
   default: true;
 
 
 }
+
 /* bg-gradient-to-r from-[#632EE3] to-[#9F62F2] border-none text-white; */
 /* bg-gradient-to-r from-green-400 via-emerald-500 to-teal-500 border-none text-white; */
 
@@ -16,9 +21,15 @@
 .btn-primary {
   @apply bg-gradient-to-r from-emerald-600 to-green-500 border-none text-white;
 }
+
 .btn-primary:hover {
   @apply opacity-90;
 }
+
 .text-primary {
   @apply bg-gradient-to-r from-emerald-600 to-green-500 bg-clip-text text-transparent;
+}
+
+body {
+  font-family: "Inter", sans-serif;
 }

@@ -35,6 +35,7 @@ const IssueDetails = () => {
         console.log(name)
         const issueId = _id;
         const amount = e.target.amount.value;
+        const title = e.target.title.value;
         const email = e.target.email.value;
         const photoURL = e.target.photoURL.value;
         const phone = e.target.phone.value;
@@ -42,7 +43,7 @@ const IssueDetails = () => {
         const date = e.target.date.value;
         const additionalInfo = e.target.additionalInfo.value;
         console.log(issueId, name, amount, email,photoURL, phone, address, date, additionalInfo)
-        const newContribution = { issueId, amount, name, email,photoURL, phone, address, date, additionalInfo }
+        const newContribution = { title, issueId, amount,category, name, email,photoURL, phone, address, date, additionalInfo }
 
         fetch('http://localhost:3000/contributions', {
             method: 'POST',
@@ -97,7 +98,7 @@ const IssueDetails = () => {
                     <p><strong>Category:</strong> <span className="badge btn-primary">{category}</span></p>
                     <p><strong>Location:</strong> {location}</p>
                     <p><strong>Date:</strong> {new Date(date).toLocaleDateString()}</p>
-                    <p><strong>Suggested Budget:</strong> <span className="text-green-600 font-bold">৳ {amount}</span></p>
+                    <p><strong>Suggested Budget:</strong> <span className="text-primary font-bold">৳ {amount}</span></p>
                 </div>
 
                 <p className="text-gray-700 leading-relaxed">{description}</p>
@@ -116,7 +117,7 @@ const IssueDetails = () => {
                     <form onSubmit={handleModalSubmit} method="dialog" className="space-y-3">
                         <div>
                             <label className="font-semibold">Issue Title</label>
-                            <input type="text" className="input input-bordered w-full" value={title} readOnly />
+                            <input type="text" name="title" className="input input-bordered w-full" value={title} readOnly />
                         </div>
 
                         <div>
