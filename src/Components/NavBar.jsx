@@ -47,7 +47,7 @@ const NavBar = () => {
                 </div>
 
                 <a className="btn btn-ghost text-xl">
-                    <img src={logo} alt="EcoNGC Logo" class="h-10 w-10 sm:h-12 sm:w-12 object-cover rounded-full shadow-md" />
+                    <img src={logo} alt="EcoNGC Logo" className="h-10 w-10 sm:h-12 sm:w-12 object-cover rounded-full shadow-md" />
                     Eco<span className='text-primary'>NGC</span></a>
             </div>
             <div className="navbar-end w-auto">
