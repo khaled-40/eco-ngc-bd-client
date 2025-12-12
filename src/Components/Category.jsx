@@ -9,7 +9,7 @@ const categories = [
 
 const Category = ({ activeCategory, setActiveCategory }) => {
   return (
-    <div className="grid grid-cols-2 md:grid-cols-4 gap-4 place-items-center">
+    <div className="p-2 grid grid-cols-2 md:grid-cols-4 gap-4 place-items-center">
       {categories.map((cat,index) => (
         <button
           key={index}
