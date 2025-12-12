@@ -4,10 +4,11 @@ import { AuthContext } from '../Context/AuthContext';
 import './Header.css';
 import { CiLogout } from "react-icons/ci";
 import { toast } from 'react-toastify';
+import logo from '../assets/1087.jpg'
 
 
 const NavBar = () => {
-    const { user,signOutUser } = use(AuthContext)
+    const { user, signOutUser } = use(AuthContext)
     console.log(user)
     const links = <>
         <li><NavLink to={'/'}>Home</NavLink></li>
@@ -24,12 +25,12 @@ const NavBar = () => {
 
     const handleLogout = () => {
         signOutUser()
-        .then(() => {
-            toast.success("Successfully logged out!");
-        })
-        .catch(error => {
-            console.log(error)
-        })
+            .then(() => {
+                toast.success("Successfully logged out!");
+            })
+            .catch(error => {
+                console.log(error)
+            })
     }
     return (
         <div className="navbar bg-base-100 shadow-sm flex justify-between items-center">
@@ -44,7 +45,10 @@ const NavBar = () => {
                         {links}
                     </ul>
                 </div>
-                <a className="btn btn-ghost text-xl">daisyUI</a>
+
+                <a className="btn btn-ghost text-xl">
+                    <img src={logo} alt="EcoNGC Logo" class="h-10 w-10 sm:h-12 sm:w-12 object-cover rounded-full shadow-md" />
+                    Eco<span className='text-primary'>NGC</span></a>
             </div>
             <div className="navbar-end w-auto">
                 <ul className="menu menu-horizontal px-1 hidden md:flex">
@@ -67,7 +71,7 @@ const NavBar = () => {
                                 </div>
                             </div>
                             <ul tabIndex={0} className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow">
-                                
+
                                 <li><a onClick={handleLogout}><CiLogout />Logout</a></li>
                             </ul>
                         </div>
