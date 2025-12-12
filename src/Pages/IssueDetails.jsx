@@ -94,7 +94,7 @@ const IssueDetails = () => {
                 <h1 className="text-3xl font-bold text-gray-800">{title}</h1>
 
                 <div className="flex flex-wrap gap-4 text-gray-700">
-                    <p><strong>Category:</strong> <span className="badge badge-success">{category}</span></p>
+                    <p><strong>Category:</strong> <span className="badge btn-primary">{category}</span></p>
                     <p><strong>Location:</strong> {location}</p>
                     <p><strong>Date:</strong> {new Date(date).toLocaleDateString()}</p>
                     <p><strong>Suggested Budget:</strong> <span className="text-green-600 font-bold">৳ {amount}</span></p>

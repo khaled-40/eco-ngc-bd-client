@@ -1,7 +1,12 @@
 ul a.active {
-    color: #16A34A;
-    background: transparent;
+  background: linear-gradient(to right, #059669, #22c55e);
+  /* emerald-600 → green-500 */
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent;
 }
+
 .menu-horizontal li {
   margin-right: 16px;
 }

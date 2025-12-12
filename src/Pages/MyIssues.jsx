@@ -112,7 +112,7 @@ const MyIssues = () => {
                                     <span
                                         className={`badge ${issue.status === "ongoing"
                                             ? "badge-warning"
-                                            : "badge-success"
+                                            : "badge btn-primary"
                                             }`}
                                     >
                                         {issue.status}
