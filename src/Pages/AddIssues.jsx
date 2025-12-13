@@ -33,7 +33,7 @@ const AddIssues = () => {
             email,
         };
 
-        fetch("http://localhost:3000/issues", {
+        fetch("https://eco-ngc-bd-server.vercel.app/issues", {
             method: "POST",
             headers: { "content-type": "application/json" },
             body: JSON.stringify(newIssue),
@@ -146,7 +146,7 @@ const AddIssues = () => {
                             name="email"
                             value={user?.email}
                             readOnly
-                            className="input input-bordered w-full bg-gray-100"
+                            className="input input-bordered w-full bg-base-100"
                         />
                     </div>
 

@@ -17,7 +17,7 @@ const MyContributions = () => {
     useEffect(() => {
         if (!user?.email) return;
 
-        fetch(`http://localhost:3000/contributions?email=${user.email}`)
+        fetch(`https://eco-ngc-bd-server.vercel.app/contributions?email=${user.email}`)
             .then((res) => res.json())
             .then((data) => {
                 setMyContributions(data);

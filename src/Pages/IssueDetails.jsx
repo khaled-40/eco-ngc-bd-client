@@ -45,7 +45,7 @@ const IssueDetails = () => {
         console.log(issueId, name, amount, email,photoURL, phone, address, date, additionalInfo)
         const newContribution = { title, issueId, amount,category, name, email,photoURL, phone, address, date, additionalInfo }
 
-        fetch('http://localhost:3000/contributions', {
+        fetch('https://eco-ngc-bd-server.vercel.app/contributions', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'
@@ -73,7 +73,7 @@ const IssueDetails = () => {
 
     }
     useEffect(() => {
-        fetch(`http://localhost:3000/issue/contributions/${issue._id}`)
+        fetch(`https://eco-ngc-bd-server.vercel.app/issue/contributions/${issue._id}`)
         .then(res => res.json())
         .then(data => {
             console.log(data)

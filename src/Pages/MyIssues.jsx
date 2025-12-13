@@ -13,7 +13,7 @@ const MyIssues = () => {
 
     // Fetch user-specific issues
     useEffect(() => {
-        fetch(`http://localhost:3000/issues?email=${user?.email}`)
+        fetch(`https://eco-ngc-bd-server.vercel.app/issues?email=${user?.email}`)
             .then((res) => res.json())
             .then((data) => setMyIssues(data));
     }, [user?.email]);
@@ -35,7 +35,7 @@ const MyIssues = () => {
             status: form.status.value,
         };
 
-        fetch(`http://localhost:3000/issues/${selectedIssue._id}`, {
+        fetch(`https://eco-ngc-bd-server.vercel.app/issues/${selectedIssue._id}`, {
             method: "PATCH",
             headers: { "content-type": "application/json" },
             body: JSON.stringify(updated),
@@ -75,7 +75,7 @@ const MyIssues = () => {
             if (result.isConfirmed) {
 
                 // Now delete
-                fetch(`http://localhost:3000/issues/${selectedIssue._id}`, {
+                fetch(`https://eco-ngc-bd-server.vercel.app/issues/${selectedIssue._id}`, {
                     method: "DELETE",
                 })
                     .then((res) => res.json())

@@ -9,6 +9,7 @@ import "swiper/css/navigation";
 import image1 from "../assets/fer-troulik-rK9ue4liv54-unsplash.jpg";
 import image2 from "../assets/mark-konig-WIxAt-XyXO0-unsplash.jpg";
 import image3 from "../assets/nico-knaack-1zoaTkEVaZ4-unsplash.jpg";
+import { Slide } from "react-awesome-reveal";
 
 const Banner = () => {
     return (
@@ -32,12 +33,14 @@ const Banner = () => {
 
                         {/* Overlay */}
                         <div className="absolute inset-0 bg-black/50 flex flex-col justify-center items-center p-4 text-center">
-                            <h2 className="text-white text-xl sm:text-3xl lg:text-4xl font-bold drop-shadow-md">
-                                Garbage Pollution
-                            </h2>
-                            <p className="text-white text-sm sm:text-lg mt-2 max-w-[90%]">
-                                Let’s clean our community—one step at a time.
-                            </p>
+                            <Slide direction="down" triggerOnce>
+                                <h2 className="text-white text-xl sm:text-3xl lg:text-4xl font-bold drop-shadow-md">
+                                    Garbage Pollution
+                                </h2>
+                                <p className="text-white text-sm sm:text-lg mt-2 max-w-[90%]">
+                                    Let’s clean our community—one step at a time.
+                                </p>
+                            </Slide>
                         </div>
                     </div>
                 </SwiperSlide>
@@ -53,12 +56,15 @@ const Banner = () => {
 
                         {/* Overlay */}
                         <div className="absolute inset-0 bg-black/50 flex flex-col justify-center items-center p-4 text-center">
-                            <h2 className="text-white text-xl sm:text-3xl lg:text-4xl font-bold drop-shadow-md">
-                                Community Cleaning
-                            </h2>
-                            <p className="text-white text-sm sm:text-lg mt-2 max-w-[90%]">
-                                A cleaner environment starts with us.
-                            </p>
+                            <Slide direction="up" triggerOnce>
+                                <h2 className="text-white text-xl sm:text-3xl lg:text-4xl font-bold drop-shadow-md">
+                                    Community Cleaning
+                                </h2>
+                                <p className="text-white text-sm sm:text-lg mt-2 max-w-[90%]">
+                                    A cleaner environment starts with us.
+                                </p>
+                            </Slide>
+
                         </div>
                     </div>
                 </SwiperSlide>
@@ -74,12 +80,14 @@ const Banner = () => {
 
                         {/* Overlay */}
                         <div className="absolute inset-0 bg-black/50 flex flex-col justify-center items-center p-4 text-center">
-                            <h2 className="text-white text-xl sm:text-3xl lg:text-4xl font-bold drop-shadow-md">
-                                Sustainable Future
-                            </h2>
-                            <p className="text-white text-sm sm:text-lg mt-2 max-w-[90%]">
-                                Small actions today, a greener world tomorrow.
-                            </p>
+                            <Slide direction="down" triggerOnce>
+                                <h2 className="text-white text-xl sm:text-3xl lg:text-4xl font-bold drop-shadow-md">
+                                    Sustainable Future
+                                </h2>
+                                <p className="text-white text-sm sm:text-lg mt-2 max-w-[90%]">
+                                    Small actions today, a greener world tomorrow.
+                                </p>
+                            </Slide>
                         </div>
                     </div>
                 </SwiperSlide>

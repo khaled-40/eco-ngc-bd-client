@@ -1,29 +1,32 @@
 import React, { useEffect, useState } from "react";
 import IssueCard from "../Components/IssueCard";
 import Category from "../Components/Category";
+import { Fade } from "react-awesome-reveal";
 
 const AllIssues = () => {
     const [issues, setIssues] = useState([]);
     const [activeCategory, setActiveCategory] = useState("");
     const [statusFilter, setStatusFilter] = useState(""); // "" | "ongoing" | "ended"
+    // const [loading, setLoading] = useState(false); // "" | "ongoing" | "ended"
 
     // Fetch data based on category + status
     const fetchIssues = (category, status) => {
-        let url = "http://localhost:3000/issues";
+
+        let url = "https://eco-ngc-bd-server.vercel.app/issues";
 
         // If category is selected
         if (category) {
-            url = `http://localhost:3000/byCategory/${category}`;
+            url = `https://eco-ngc-bd-server.vercel.app/byCategory/${category}`;
         }
 
         // If both category + status
         if (category && status) {
-            url = `http://localhost:3000/byCategoryStatus/${category}/${status}`;
+            url = `https://eco-ngc-bd-server.vercel.app/byCategoryStatus/${category}/${status}`;
         }
 
         // If only status (no category)
         if (!category && status) {
-            url = `http://localhost:3000/byStatus/${status}`;
+            url = `https://eco-ngc-bd-server.vercel.app/byStatus/${status}`;
         }
 
         fetch(url)
@@ -91,11 +94,14 @@ const AllIssues = () => {
             </div>
 
             {/* ISSUE LIST */}
-            <div className="grid gap-5 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 pt-5">
-                {issues.map((issue) => (
-                    <IssueCard key={issue._id} issue={issue} />
-                ))}
-            </div>
+            <Fade cascade damping={0.1} triggerOnce>
+                <div className="grid gap-5 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 pt-5">
+                    {issues.map((issue) => (
+                        <IssueCard key={issue._id} issue={issue} />
+                    ))}
+                </div>
+            </Fade>
+
         </div>
     );
 };
