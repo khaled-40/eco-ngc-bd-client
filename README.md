@@ -44,22 +44,23 @@ EcoNGC is a React-based web application for reporting urban issues, tracking com
 ## Project Structure
 eco-ngc/
 ├─ src/
-│ ├─ assets/ # Images and media
-│ ├─ Components/ # Reusable components (Navbar, Footer, IssueCard, Banner, Category, ThemeToggle, CommunityExtras, Header, LatestIssues)
-│ ├─ Context/ # AuthContext, AuthProvider, ThemeContext, ThemeProvider
-│ ├─ Pages/ # Page components (Home, AllIssues, AddIssues, MyIssues, IssueDetails, MyContributions)
-│ ├─ Routes/ # React Router configuration(Routes, PrivateRoute)
-│ ├─ Firebase/ # Configures and initializes the Firebase(firebase.init.js)
-│ ├─ Layout/ # Layout of the project(Layout.jsx)
-│ └─  App/ # Rendering Global Hub (App.css, main.jsx)
-├─ gitignore/
-├─ index.html/
-├─ .env # Environment variables
-├─ tailwind.config.js # Tailwind configuration with DaisyUI themes
+│  ├─ assets/          # Images and media
+│  ├─ Components/      # Reusable components (Navbar, Footer, IssueCard, Banner, Category, ThemeToggle, CommunityExtras, Header, LatestIssues)
+│  ├─ Context/         # AuthContext, AuthProvider, ThemeContext, ThemeProvider
+│  ├─ Pages/           # Page components (Home, AllIssues, AddIssues, MyIssues, IssueDetails, MyContributions)
+│  ├─ Routes/          # React Router configuration (Routes, PrivateRoute)
+│  ├─ Firebase/        # Firebase configuration (firebase.init.js)
+│  ├─ Layout/          # Layout of the project (Layout.jsx)
+│  └─ App/             # Rendering Global Hub (App.css, main.jsx)
+├─ .gitignore
+├─ index.html
+├─ .env                # Environment variables
+├─ tailwind.config.js  # Tailwind configuration with DaisyUI themes
 ├─ package-lock.json
 ├─ package.json
 ├─ README.md
 └─ vite.config.js
+
 
 ---
 
