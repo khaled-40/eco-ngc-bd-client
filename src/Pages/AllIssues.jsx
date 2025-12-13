@@ -7,36 +7,37 @@ const AllIssues = () => {
     const [issues, setIssues] = useState([]);
     const [activeCategory, setActiveCategory] = useState("");
     const [statusFilter, setStatusFilter] = useState(""); // "" | "ongoing" | "ended"
-    // const [loading, setLoading] = useState(false); // "" | "ongoing" | "ended"
+    const [loading, setLoading] = useState(true); // "" | "ongoing" | "ended"
 
-    // Fetch data based on category + status
-    const fetchIssues = (category, status) => {
 
+    useEffect(() => {
+        setTimeout(() => setLoading(true), 0);
         let url = "https://eco-ngc-bd-server.vercel.app/issues";
 
         // If category is selected
-        if (category) {
-            url = `https://eco-ngc-bd-server.vercel.app/byCategory/${category}`;
+        if (activeCategory) {
+            url = `https://eco-ngc-bd-server.vercel.app/byCategory/${activeCategory}`;
         }
 
         // If both category + status
-        if (category && status) {
-            url = `https://eco-ngc-bd-server.vercel.app/byCategoryStatus/${category}/${status}`;
+        if (activeCategory && statusFilter) {
+            url = `https://eco-ngc-bd-server.vercel.app/byCategoryStatus/${activeCategory}/${statusFilter}`;
         }
 
         // If only status (no category)
-        if (!category && status) {
-            url = `https://eco-ngc-bd-server.vercel.app/byStatus/${status}`;
+        if (!activeCategory && statusFilter) {
+            url = `https://eco-ngc-bd-server.vercel.app/byStatus/${statusFilter}`;
         }
 
         fetch(url)
             .then((res) => res.json())
-            .then((data) => setIssues(data));
-    };
-
-    useEffect(() => {
-        fetchIssues(activeCategory, statusFilter);
+            .then((data) => {
+                setIssues(data);
+                setLoading(false)
+            });
     }, [activeCategory, statusFilter]);
+
+
 
     return (
         <div className="mt-8 max-w-[1200px] mx-auto">
@@ -94,13 +95,20 @@ const AllIssues = () => {
             </div>
 
             {/* ISSUE LIST */}
-            <Fade cascade damping={0.1} triggerOnce>
-                <div className="grid gap-5 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 pt-5">
-                    {issues.map((issue) => (
-                        <IssueCard key={issue._id} issue={issue} />
-                    ))}
-                </div>
-            </Fade>
+            {
+                loading ?
+                    <div className="flex items-center justify-center mt-20">
+                        <span className="loading loading-spinner text-success"></span>
+                    </div> :
+
+                    <Fade cascade damping={0.1} triggerOnce>
+                        <div className="grid gap-5 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 pt-5">
+                            {issues.map((issue) => (
+                                <IssueCard key={issue._id} issue={issue} />
+                            ))}
+                        </div>
+                    </Fade>
+            }
 
         </div>
     );

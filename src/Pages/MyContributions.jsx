@@ -66,8 +66,8 @@ const MyContributions = () => {
     // -------------------------------
     if (loading) {
         return (
-            <div className="flex justify-center mt-10">
-                <span className="loading loading-spinner loading-lg text-primary"></span>
+            <div className="flex items-center justify-center mt-20">
+                <span className="loading loading-spinner text-success"></span>
             </div>
         );
     }

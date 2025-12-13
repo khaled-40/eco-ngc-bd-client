@@ -7,6 +7,7 @@ const MyIssues = () => {
     console.log(user.email)
     const [myIssues, setMyIssues] = useState([]);
     const [selectedIssue, setSelectedIssue] = useState(null);
+    const [loading, setLoading] = useState(true);
 
     const updateModalRef = useRef();
 
@@ -15,7 +16,10 @@ const MyIssues = () => {
     useEffect(() => {
         fetch(`https://eco-ngc-bd-server.vercel.app/issues?email=${user?.email}`)
             .then((res) => res.json())
-            .then((data) => setMyIssues(data));
+            .then((data) => {
+                setMyIssues(data);
+                setLoading(false)
+            });
     }, [user?.email]);
 
     console.log(myIssues)
@@ -89,6 +93,13 @@ const MyIssues = () => {
         });
     };
 
+    if (loading) {
+        return (
+            <div className="flex items-center justify-center mt-20">
+                <span className="loading loading-spinner text-success"></span>
+            </div>
+        );
+    }
 
     return (
         <div className="p-4 md:p-6">
@@ -128,7 +139,7 @@ const MyIssues = () => {
                                     <button
                                         className="btn btn-sm btn-info"
                                         onClick={(e) => {
-                                             e.currentTarget.blur();
+                                            e.currentTarget.blur();
                                             setSelectedIssue(issue);
                                             updateModalRef.current.showModal();
                                         }}
