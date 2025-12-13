@@ -62,7 +62,7 @@ const NavBar = () => {
                             <Link to={'/register'} className='btn ml-2 btn-primary'>Register</Link>
                         </>
                     ) : (
-                        <div className="dropdown dropdown-end">
+                        <div className="dropdown dropdown-end relative z-50">
                             <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar">
                                 <div className="w-10 rounded-full">
                                     <img

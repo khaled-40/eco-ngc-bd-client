@@ -18,21 +18,21 @@ const CommunityExtras = () => {
 
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 text-center">
           {/* Registered Users */}
-          <div className="p-6 shadow-md rounded-2xl bg-[#DDF6E3] hover:shadow-xl transition">
+          <div className="p-6 shadow-2xl rounded-2xl bg-base hover:shadow-5xl transition">
             <HiUsers className="text-4xl mx-auto mb-3" />
             <h3 className="text-2xl font-bold">{stats.users}</h3>
             <p className="text-gray-500">Registered Users</p>
           </div>
 
           {/* Issues Resolved */}
-          <div className="p-6 shadow-md rounded-2xl bg-[#DDF6E3] hover:shadow-xl transition">
+          <div className="p-6 shadow-2xl rounded-2xl bg-base hover:shadow-xl transition">
             <FaCheckCircle className="text-4xl text-green-600 mx-auto mb-3" />
             <h3 className="text-2xl font-bold">{stats.resolved}</h3>
             <p className="text-gray-500">Issues Resolved</p>
           </div>
 
           {/* Issues Pending */}
-          <div className="p-6 shadow-md rounded-2xl bg-[#DDF6E3] hover:shadow-xl transition">
+          <div className="p-6 shadow-2xl rounded-2xl bg-base hover:shadow-xl transition">
             <FaClock className="text-4xl text-yellow-500 mx-auto mb-3" />
             <h3 className="text-2xl font-bold">{stats.pending}</h3>
             <p className="text-gray-500">Pending Issues</p>

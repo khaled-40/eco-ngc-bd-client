@@ -85,23 +85,23 @@ const IssueDetails = () => {
         <div className="max-w-5xl mx-auto px-2 sm:px-4 md:px-6 py-4 sm:py-6 space-y-5">
 
             {/* --- Issue Details Card --- */}
-            <div className="bg-white rounded-xl shadow px-2 sm:px-4 md:px-6 space-y-4">
+            <div className="bg-base rounded-xl shadow px-2 sm:px-4 md:px-6 space-y-4">
                 <img
-                    src="https://i.ibb.co.com/nxCCrZ9/TVS-Apache-RTR-160-copy1-cf4fd92da6.webpj"
+                    src={issue?.image}
                     alt={title}
                     className="rounded-lg w-full h-80 object-cover"
                 />
 
-                <h1 className="text-3xl font-bold text-gray-800">{title}</h1>
+                <h1 className="text-3xl font-bold text-base-content">{title}</h1>
 
                 <div className="flex flex-wrap gap-4 text-gray-700">
-                    <p><strong>Category:</strong> <span className="badge btn-primary">{category}</span></p>
-                    <p><strong>Location:</strong> {location}</p>
-                    <p><strong>Date:</strong> {new Date(date).toLocaleDateString()}</p>
-                    <p><strong>Suggested Budget:</strong> <span className="text-primary font-bold">৳ {amount}</span></p>
+                    <p className="text-base-content"><strong>Category:</strong> <span className="badge btn-primary">{category}</span></p>
+                    <p className="text-base-content"><strong>Location:</strong> {location}</p>
+                    <p className="text-base-content"><strong>Date:</strong> {new Date(date).toLocaleDateString()}</p>
+                    <p className="text-base-content"><strong>Suggested Budget:</strong> <span className="text-primary font-bold">৳ {amount}</span></p>
                 </div>
 
-                <p className="text-gray-700 leading-relaxed">{description}</p>
+                <p className="text-base-content leading-relaxed">{description}</p>
 
                 {/* Open Modal */}
                 <button className="btn btn-primary mb-3" onClick={openModal}>
@@ -175,7 +175,7 @@ const IssueDetails = () => {
             </dialog>
 
 
-            <div className="bg-white rounded-xl shadow px-2 sm:px-4 md:px-6 mt-8">
+            <div className="bg-base rounded-xl shadow px-2 sm:px-4 md:px-6 mt-8">
                 <h2 className="text-2xl font-bold mb-4">Contributors</h2>
                 <div className="overflow-x-auto">
                     <table className="table">
