@@ -104,8 +104,13 @@ const MyIssues = () => {
     return (
         <div className="p-4 md:p-6">
             <h2 className="text-3xl font-bold text-center mb-6">My Issues</h2>
-
-            <div className="overflow-x-auto shadow-lg rounded-lg">
+            {
+                myIssues.length ===0?
+                (<p className="text-center text-gray-600 mt-10">
+                    You have not posted any issue yet.
+                </p>)
+                :
+                (<div className="overflow-x-auto shadow-lg rounded-lg">
                 <table className="table table-zebra w-full">
                     <thead className="bg-base-300">
                         <tr>
@@ -162,7 +167,10 @@ const MyIssues = () => {
                         ))}
                     </tbody>
                 </table>
-            </div>
+            </div>)
+            }
+
+            
 
             {/* ---------------------------------------------------
            UPDATE MODAL

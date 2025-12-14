@@ -64,6 +64,8 @@ const IssueDetails = () => {
                         showConfirmButton: false,
                         timer: 1500
                     });
+                    const newContributions = [...contributions,newContribution];
+                    setContributions(newContributions)
                 }
             })
             .catch(err => {
